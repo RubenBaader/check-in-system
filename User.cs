@@ -31,6 +31,10 @@ namespace UCL_Programmering_Eksamen
             _employeeNumber= newNum;
         }
         public void Delete() { }    // find by ID and delete in DB
-        
+        public override string ToString()
+        {
+            return $"User: {Name} \nNumber: {Number}";
+        }
+
     }
 }

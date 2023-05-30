@@ -10,19 +10,27 @@ namespace UCL_Programmering_Eksamen
     {
         public DateTime CheckInTime { get; set; }
         public DateTime? CheckOutTime { get; set; }
-        public User ShiftUser { get; set; }
-        public string ShiftNote { get; set; }
+        public User User { get; set; }
+        public string Note { get; set; }
 
-        public WorkShift(User shiftUser, string shiftNote = "Check in for work" )
+        public WorkShift(User user, string note = "Check in for work" )
         {
             CheckInTime = DateTime.Now;
-            ShiftUser = shiftUser;
-            ShiftNote = shiftNote;
+            User = user;
+            Note = note;
         }
         public void CheckOut()
         {
             CheckOutTime = DateTime.Now;
         }
-
+        public override string ToString()
+        {
+            string str = 
+                $"{User} \n" +
+                $"Check In: {CheckInTime} \n" +
+                (CheckOutTime.HasValue ? $"Check Out: {CheckOutTime} \n" : null) +
+                $"Note: {Note} \n";
+            return str;
+        }
     }
 }
