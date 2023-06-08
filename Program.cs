@@ -16,23 +16,9 @@
         //  Store data: {Min : in memory, Mod : in file, Max : in DB}
         static void Main()
         {
+            //Due to time constraints, the UI currently handles all high level logic
             TerminalUI UI = new TerminalUI();
             UI.Run();
-            //User Bob = new User("Bob", 42);
-            //User Martin = new User("Martin", 6969);
-
-            //WorkShift myShift = new WorkShift(Bob);
-            //WorkShift newShift = new WorkShift(Bob, "Just workin'");
-            //WorkShift anotherShift = new WorkShift(Martin, "Love workin'");
-            ////Console.WriteLine("{0}  {1}", myShift.ShiftNote, myShift.CheckInTime);
-            //myShift.CheckOut();
-
-            //WorkShiftManager workShiftManager = new WorkShiftManager();
-            //workShiftManager.Add(myShift);
-            //workShiftManager.Add(newShift);
-            //workShiftManager.Add(anotherShift);
-            //workShiftManager.PrintAll();
-            //Console.WriteLine(workShiftManager.ToString(workShiftManager.Search("Bob")));
         }
     }
 }

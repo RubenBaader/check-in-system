@@ -8,7 +8,7 @@ namespace UCL_Programmering_Eksamen
 {
     internal class WorkShiftManager
     {
-        private List<WorkShift> workShifts;
+        public List<WorkShift> workShifts;
 
         public WorkShiftManager() 
         { 
@@ -37,7 +37,6 @@ namespace UCL_Programmering_Eksamen
                 }
             }
             return result;
-            //return workShifts.Where().ToList();
         }
         public string ToString(List<WorkShift> list) 
         {
@@ -48,5 +47,44 @@ namespace UCL_Programmering_Eksamen
             }
             return result;
         }
+
+        public void SaveWorkshifts(string filePath)
+        {
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                foreach (WorkShift shift in workShifts)
+                {
+                    writer.WriteLine(
+                        $"{shift.User.Name}," +
+                        $"{shift.User.Number}," +
+                        $"{shift.CheckInTime}," +
+                        $"{(shift.CheckOutTime.HasValue ? shift.CheckOutTime : "Nan") }," +
+                        $"{shift.Note}"
+                        );
+                }
+            }
+        }
+        //not implemented -- time constraints
+        public List<WorkShift> LoadWorkShifts(string filePath)
+        {
+            List<WorkShift> objects = new List<WorkShift>();
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                // Read data rows
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] values = line.Split(',');
+
+                    WorkShift obj = new WorkShift(values[0], values[1], values[2], values[3], values[4]);
+
+                    objects.Add(obj);
+                }
+            }
+
+            return objects;
+        }
     }
+
 }

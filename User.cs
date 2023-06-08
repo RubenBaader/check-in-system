@@ -8,33 +8,36 @@ namespace UCL_Programmering_Eksamen
 {
     internal class User
     {
-        private string _name;
+        //private string Name;
         private int _employeeNumber;
-        public string Name { get { return _name; } }
-        public int Number { get { return _employeeNumber; } }
+        public string Name { get; set; }
+        public int Number { get; set; }
 
 
         public User(string name, int employeeNumber)
         {
-            _name = name;
+            Name = name;
             _employeeNumber = employeeNumber;
         }
+        public User()
+        {
+            Name = "JohnnyNoName";
+            _employeeNumber = -1;
+        }
 
-        public void Edit(string newName)
+        public void Edit(string input)
         {
-            //ifAuth do
-            _name= newName;
+            Name= input;
         }
-        public void Edit(int newNum)
+        public void Edit(int input)
         {
-            //ifAuth do
-            _employeeNumber= newNum;
+            _employeeNumber= input;
         }
-        public void Delete() { }    // find by ID and delete in DB
+        // public void Delete() { }    <= find by ID and delete in list, then DB
         public override string ToString()
         {
-            return $"User: {Name} \nNumber: {Number}";
+            return $"User: {Name} \n" +
+                   $"Number: {Number}";
         }
-
     }
 }

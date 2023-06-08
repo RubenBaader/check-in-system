@@ -19,6 +19,20 @@ namespace UCL_Programmering_Eksamen
             User = user;
             Note = note;
         }
+        //construct from csv
+        public WorkShift(string userName, string userNum, string checkInTime, string checkOutTime, string note )
+        {
+            //cannot initialize user this way
+            User = new User(userName, int.Parse(userNum);
+            
+            CheckInTime = DateTime.Parse(checkInTime);
+            CheckOutTime = DateTime.Parse(checkOutTime);
+            Note = note;
+        }
+        public void Edit(string note)
+        {
+            this.Note = note;
+        }
         public void CheckOut()
         {
             CheckOutTime = DateTime.Now;
