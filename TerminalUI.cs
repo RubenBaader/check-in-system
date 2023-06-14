@@ -22,12 +22,12 @@ namespace UCL_Programmering_Eksamen
             //}
 
             //workShiftManager.SaveWorkshifts("test.csv");
-            string Path = Directory.GetCurrentDirectory() + "\\test.csv";
             workShiftManager.LoadWorkShifts(Path);
 
             Console.WriteLine("UI initialized. Welcome!"); 
         }
 
+        private string Path = Directory.GetCurrentDirectory() + "\\Data.csv";
         private WorkShiftManager workShiftManager = new WorkShiftManager();
         private List<User> UserList = new List<User>();
         private User CurrentUser = new User();
@@ -76,6 +76,9 @@ namespace UCL_Programmering_Eksamen
                         break;
                     case "q":
                         ClearLine();
+                        Console.WriteLine("Saving....");
+                        // Add try/catch to log errors if saving fails
+                        workShiftManager.SaveWorkshifts(Path);
                         Console.WriteLine("Goodbye!");
                         IsRunning= false;
                         break;
@@ -116,7 +119,7 @@ namespace UCL_Programmering_Eksamen
                 {
                     this.CurrentUser = user;
                     Console.WriteLine("Welcome, {0}", CurrentUser.Name);
-                    //Console.ReadKey();
+                    Console.ReadKey();
                     return;
                 }
             }
@@ -314,6 +317,7 @@ namespace UCL_Programmering_Eksamen
                 if (!this.workShiftManager.workShifts[i].CheckOutTime.HasValue)
                     Console.WriteLine(this.workShiftManager.workShifts[i].User.Name);
             }
+            Console.ReadLine();
         }
         private void SearchActiveUsers()
         {
