@@ -23,6 +23,10 @@ namespace UCL_Programmering_Eksamen
 
             //workShiftManager.SaveWorkshifts("test.csv");
             workShiftManager.LoadWorkShifts(Path);
+            foreach (WorkShift ws in workShiftManager.workShifts)
+            {
+                UserList.Add(ws.User);
+            }
 
             Console.WriteLine("UI initialized. Welcome!"); 
         }
