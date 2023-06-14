@@ -65,7 +65,7 @@ namespace UCL_Programmering_Eksamen
             }
         }
         //not implemented -- time constraints
-        public List<WorkShift> LoadWorkShifts(string filePath)
+        public void LoadWorkShifts(string filePath)
         {
             List<WorkShift> objects = new List<WorkShift>();
 
@@ -83,7 +83,7 @@ namespace UCL_Programmering_Eksamen
                 }
             }
 
-            return objects;
+            workShifts = objects;
         }
     }
 

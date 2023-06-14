@@ -9,7 +9,7 @@ namespace UCL_Programmering_Eksamen
     internal class User
     {
         //private string Name;
-        private int _employeeNumber;
+        //private int _employeeNumber;
         public string Name { get; set; }
         public int Number { get; set; }
 
@@ -17,12 +17,12 @@ namespace UCL_Programmering_Eksamen
         public User(string name, int employeeNumber)
         {
             Name = name;
-            _employeeNumber = employeeNumber;
+            Number = employeeNumber;
         }
         public User()
         {
             Name = "JohnnyNoName";
-            _employeeNumber = -1;
+            Number = -1;
         }
 
         public void Edit(string input)
@@ -31,7 +31,7 @@ namespace UCL_Programmering_Eksamen
         }
         public void Edit(int input)
         {
-            _employeeNumber= input;
+            Number = input;
         }
         // public void Delete() { }    <= find by ID and delete in list, then DB
         public override string ToString()

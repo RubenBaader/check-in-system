@@ -11,17 +11,19 @@ namespace UCL_Programmering_Eksamen
     {
         //  Allows the user to interact with the program        
         public TerminalUI() 
-        { 
+        {
             //test list for users
-            for (int i = 0; i < 7; i++)
-            {
-                User user = new User($"bob{i}", i);
-                UserList.Add(user);
-                WorkShift shift = new WorkShift(user);
-                workShiftManager.workShifts.Add(shift);
-            }
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    User user = new User($"bob{i}", i);
+            //    UserList.Add(user);
+            //    WorkShift shift = new WorkShift(user);
+            //    workShiftManager.workShifts.Add(shift);
+            //}
 
-            workShiftManager.SaveWorkshifts("test.csv");
+            //workShiftManager.SaveWorkshifts("test.csv");
+            string Path = Directory.GetCurrentDirectory() + "\\test.csv";
+            workShiftManager.LoadWorkShifts(Path);
 
             Console.WriteLine("UI initialized. Welcome!"); 
         }
@@ -235,7 +237,8 @@ namespace UCL_Programmering_Eksamen
 
             Console.Clear();
             workShiftManager.PrintAll();
-            Console.ReadKey();
+            //Console.ReadKey();
+            Console.ReadLine();
         }
         private void EditWorkShift ()
         {

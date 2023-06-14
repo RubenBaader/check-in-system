@@ -22,11 +22,17 @@ namespace UCL_Programmering_Eksamen
         //construct from csv
         public WorkShift(string userName, string userNum, string checkInTime, string checkOutTime, string note )
         {
-            //cannot initialize user this way
-            User = new User(userName, int.Parse(userNum);
+            User = new User(userName, int.Parse(userNum));
             
+            //try catch vs look for flag value: abstraction vs efficiency
+
             CheckInTime = DateTime.Parse(checkInTime);
-            CheckOutTime = DateTime.Parse(checkOutTime);
+            //CheckOutTime = DateTime.Parse(checkOutTime);
+            if (DateTime.TryParse(checkOutTime, out DateTime value))
+            {
+                CheckOutTime = value;
+            }
+
             Note = note;
         }
         public void Edit(string note)
