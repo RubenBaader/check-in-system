@@ -23,18 +23,21 @@ namespace UCL_Programmering_Eksamen
 
             //workShiftManager.SaveWorkshifts("test.csv");
             workShiftManager.LoadWorkShifts(Path);
-            foreach (WorkShift ws in workShiftManager.workShifts)
-            {
-                UserList.Add(ws.User);
-            }
+
+            //foreach (WorkShift ws in workShiftManager.workShifts)
+            //{
+            //    workShiftManager.UserList.Add(ws.User);
+            //}
 
             Console.WriteLine("UI initialized. Welcome!"); 
         }
 
         private string Path = Directory.GetCurrentDirectory() + "\\Data.csv";
         private WorkShiftManager workShiftManager = new WorkShiftManager();
-        private List<User> UserList = new List<User>();
+
+        
         private User CurrentUser = new User();
+
         private static readonly Tuple<int, int> MenuStart = Tuple.Create(0, 1);
         private static readonly int MenuWidth = Console.WindowWidth;
         public void Run()
@@ -117,7 +120,7 @@ namespace UCL_Programmering_Eksamen
             Console.WriteLine("Enter Username");
             string userName = GetInput();
 
-            foreach (User user in this.UserList)
+            foreach (User user in this.workShiftManager.UserList)
             {
                 if (user.Name == userName)
                 {
@@ -135,7 +138,7 @@ namespace UCL_Programmering_Eksamen
             Console.WriteLine("Enter Username");
             User user = new User(GetInput(), num);
             Console.WriteLine(user.ToString());
-            this.UserList.Add(user);
+            this.workShiftManager.UserList.Add(user);
             this.CurrentUser = user;
             Console.ReadKey();
         }

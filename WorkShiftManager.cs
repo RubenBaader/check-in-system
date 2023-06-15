@@ -9,7 +9,7 @@ namespace UCL_Programmering_Eksamen
     internal class WorkShiftManager
     {
         public List<WorkShift> workShifts;
-
+        internal List<User> UserList = new List<User>();
         public WorkShiftManager() 
         { 
             workShifts = new List<WorkShift>();
@@ -79,6 +79,24 @@ namespace UCL_Programmering_Eksamen
 
                     WorkShift obj = new WorkShift(values[0], values[1], values[2], values[3], values[4]);
 
+                    //User TempUser = new User(values[0], int.Parse(values[1]));
+
+                    foreach (User user in UserList)
+                    {
+                        //if(user.Name == TempUser.Name && user.Number == TempUser.Number)
+                        //{
+                        //    TempUser = user;
+
+                        //}
+                        if (user.Name == obj.User.Name && user.Number == obj.User.Number)
+                        {
+                            obj.User = user;
+                            //objects.Add(obj);
+                            break;
+                        }   
+                    }
+
+                    UserList.Add(obj.User);
                     objects.Add(obj);
                 }
             }
